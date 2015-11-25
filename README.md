@@ -9,7 +9,7 @@ Workaround for Carthage to avoid rebuilding all your dependencies every time you
 
 ##Usage
 
-Run carthage-build from the same folder where you have your Cartfile/Carthage directory:
+Run carthage-build from the same directory where you have your Cartfile/Carthage directory:
 
 ```bash
 ./carthage-build.sh --dependency 'github "ruipfcosta/SwiftyWalkthrough"'
