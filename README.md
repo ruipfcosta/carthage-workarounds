@@ -23,3 +23,14 @@ The default carthage command used to build the dependencies is ```carthage updat
 
 For a more permanent solution you can simply edit the script and change the variable ```DEFAULT_COMMAND```.
 
+## Credits
+
+Owned and maintained by Rui Costa ([@ruipfcosta](https://twitter.com/ruipfcosta)). 
+
+## Contributing
+
+Bug reports and pull requests are welcome.
+
+## License
+
+Carthage-Workarounds is released under the MIT license. See LICENSE for details.
