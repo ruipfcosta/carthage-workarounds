@@ -8,7 +8,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 
 function remember_dependency {
-    # chech if Cartfile exists
+    # check if Cartfile exists
     if [ -f $WORKING_DIR/Cartfile ]; then
         # Cartfile exists but does not contain the dependency
         if ! grep -Fxq "$DEPENDENCY" $WORKING_DIR/Cartfile ; then
@@ -18,7 +18,6 @@ function remember_dependency {
     else
        echo $DEPENDENCY > $WORKING_DIR/Cartfile
        printf "${GREEN}*** INFO: *** ${NORMAL}Cartfile created!\n"
-
     fi
 }
 
@@ -70,7 +69,7 @@ fi
 
 printf "${GREEN}*** INFO: *** ${NORMAL}Building dependency ${GREEN}${DEPENDENCY}${NORMAL} with command ${GREEN}${COMMAND}${NORMAL}.\n"
 
-# create temporary directory and move to it
+# create temporary directory and move there
 TEMP_DIR=$(date | md5).tmp
 mkdir $TEMP_DIR
 cd $TEMP_DIR
@@ -89,4 +88,3 @@ else
     printf "${RED}*** ERROR: *** ${NORMAL}Command execution failed!\n"
     exit 3
 fi
-
