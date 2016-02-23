@@ -84,6 +84,9 @@ if [ $? -eq 0 ]; then
     # merge new Carthage directory with the existing one
     rsync -a Carthage/ $WORKING_DIR/Carthage/
     remember_dependency
+    printf "${GREEN}*** INFO ***${NORMAL} Add the following to your project input files:\n\n"
+    find . -name "*.framework" | sed "s/.\/Carthage/\$\{SRCROOT\}\/Carthage/g" | xargs echo "    $1"
+    printf "\n"
 else
     printf "${RED}*** ERROR: *** ${NORMAL}Command execution failed!\n"
     exit 3
