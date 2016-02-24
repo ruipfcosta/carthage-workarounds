@@ -1,6 +1,8 @@
 #Carthage Workarounds
 Shell scripts to make life a little easier when using Carthage.
 
+Check my article [Saving precious time when building Carthage dependencies](https://medium.com/@ruipfcosta/saving-precious-time-when-building-carthage-dependencies-486225eb93ca#.74ucnxgj2).
+
 ##carthage-build.sh
 Workaround for Carthage to avoid rebuilding all your dependencies every time you want to add a new one to your Cartfile.
 
