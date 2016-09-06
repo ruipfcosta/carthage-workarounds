@@ -9,10 +9,10 @@ GREEN='\033[0;32m'
 
 function remember_dependency {
     # check if Cartfile exists
-    if [ -f $WORKING_DIR/Cartfile ]; then
+    if [ -f "$WORKING_DIR/Cartfile" ]; then
         # Cartfile exists but does not contain the dependency
-        if ! grep -Fxq "$DEPENDENCY" $WORKING_DIR/Cartfile ; then
-            echo -e "\n$DEPENDENCY" >> $WORKING_DIR/Cartfile
+        if ! grep -Fxq "$DEPENDENCY" "$WORKING_DIR/Cartfile" ; then
+            echo -e "\n$DEPENDENCY" >> "$WORKING_DIR/Cartfile"
             printf "${GREEN}*** INFO: *** ${NORMAL}Dependency added to your Cartfile!\n"
         fi
     else
@@ -22,7 +22,7 @@ function remember_dependency {
 }
 
 function cleanup {
-    cd $WORKING_DIR
+    cd "$WORKING_DIR"
 
     if [ -d $TEMP_DIR ]; then
         rm -rf $TEMP_DIR    
@@ -72,7 +72,7 @@ printf "${GREEN}*** INFO: *** ${NORMAL}Building dependency ${GREEN}${DEPENDENCY}
 # create temporary directory and move there
 TEMP_DIR=$(date | md5).tmp
 mkdir $TEMP_DIR
-cd $TEMP_DIR
+cd "$TEMP_DIR"
 
 # create temporary Cartfile with the specified dependency
 echo $DEPENDENCY > Cartfile
@@ -82,7 +82,7 @@ eval "$COMMAND"
 
 if [ $? -eq 0 ]; then
     # merge new Carthage directory with the existing one
-    rsync -a Carthage/ $WORKING_DIR/Carthage/
+    rsync -a "Carthage/" "$WORKING_DIR/Carthage/"
     remember_dependency
     printf "${GREEN}*** INFO ***${NORMAL} Add the following to your project input files:\n\n"
     find . -name "*.framework" | sed "s/.\/Carthage/\$\{SRCROOT\}\/Carthage/g" | xargs echo "    $1"
